@@ -362,7 +362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &38160291
 GameObject:
@@ -534,7 +533,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &57934081
 GameObject:
@@ -1202,7 +1200,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 957246662}
         m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: OnStorage
+        m_MethodName: StorageClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1493,7 +1491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &171425140
 GameObject:
@@ -1913,7 +1910,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &218247031
 GameObject:
@@ -2120,7 +2116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &230134394
 GameObject:
@@ -3132,7 +3127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &392453909
 GameObject:
@@ -3434,7 +3428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &442207146
 GameObject:
@@ -10402,7 +10395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &516393310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10880,7 +10873,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &559095991
 GameObject:
@@ -10973,7 +10965,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &569013238
 GameObject:
@@ -11066,7 +11057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &574465592
 GameObject:
@@ -11159,7 +11149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &583590074
 GameObject:
@@ -11773,7 +11762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &656817095
 GameObject:
@@ -11905,7 +11893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &663550297
 GameObject:
@@ -12196,7 +12183,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 205, y: 0}
+  m_SizeDelta: {x: 205, y: 16}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &699861449
 MonoBehaviour:
@@ -12743,7 +12730,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &744617143
 GameObject:
@@ -13154,7 +13140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &792312629
 GameObject:
@@ -13188,6 +13173,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 953909306}
+  - {fileID: 1649686220}
   - {fileID: 230134395}
   - {fileID: 905282913}
   m_Father: {fileID: 1534932235}
@@ -13195,7 +13181,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: 0}
-  m_SizeDelta: {x: 300, y: 400}
+  m_SizeDelta: {x: 300, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792312631
 MonoBehaviour:
@@ -13247,74 +13233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4687938b2c88dc949948d80c3344b9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  slots:
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  slotImages:
-  - {fileID: 807913773}
-  - {fileID: 511098529}
-  - {fileID: 935508476}
-  - {fileID: 1066421666}
-  - {fileID: 710972387}
-  - {fileID: 1102906387}
-  - {fileID: 970334595}
-  - {fileID: 282113701}
-  - {fileID: 637127168}
-  - {fileID: 601581853}
-  - {fileID: 1954261636}
-  - {fileID: 392453911}
-  - {fileID: 18935968}
-  - {fileID: 1159875262}
-  - {fileID: 2141428706}
-  - {fileID: 1371077956}
-  - {fileID: 73518047}
-  - {fileID: 801639167}
-  - {fileID: 224886724}
-  - {fileID: 167851245}
-  manager: {fileID: 957246666}
+  itemManager: {fileID: 957246667}
   userInterfaceManager: {fileID: 957246662}
   subInventory: {fileID: 516393311}
-  invType: 0
-  slotIndex: -1
-  dragging: 0
 --- !u!1 &797254111
 GameObject:
   m_ObjectHideFlags: 0
@@ -13406,7 +13327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &801639165
 GameObject:
@@ -14560,7 +14480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &905282912
 GameObject:
@@ -14693,7 +14612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &928270530
 GameObject:
@@ -14786,7 +14704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &929399383
 GameObject:
@@ -15031,7 +14948,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &953909305
 GameObject:
@@ -15176,6 +15092,7 @@ GameObject:
   - component: {fileID: 957246663}
   - component: {fileID: 957246664}
   - component: {fileID: 957246666}
+  - component: {fileID: 957246667}
   - component: {fileID: 957246662}
   m_Layer: 0
   m_Name: Managers
@@ -15196,9 +15113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140bf26d34f5aeb468a66230f7145e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UserInterfaceManager
-  inventory: {fileID: 792312633}
-  storage: {fileID: 0}
+  dragging: 0
   tooltip: {fileID: 845913034}
+  itemManager: {fileID: 957246667}
   escMenu: {fileID: 194165436}
 --- !u!4 &957246663
 Transform:
@@ -15258,41 +15175,160 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 1760401334}
+  userInterfaceManager: {fileID: 957246662}
+  itemManager: {fileID: 957246667}
+--- !u!114 &957246667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957246661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a20ab2abb0ab814dacdcd7924ff447a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+  userInterfaceManager: {fileID: 957246662}
+  slots:
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  slotImages:
+  - {fileID: 807913773}
+  - {fileID: 511098529}
+  - {fileID: 935508476}
+  - {fileID: 1066421666}
+  - {fileID: 710972387}
+  - {fileID: 1102906387}
+  - {fileID: 970334595}
+  - {fileID: 282113701}
+  - {fileID: 637127168}
+  - {fileID: 601581853}
+  - {fileID: 1954261636}
+  - {fileID: 392453911}
+  - {fileID: 18935968}
+  - {fileID: 1159875262}
+  - {fileID: 2141428706}
+  - {fileID: 1371077956}
+  - {fileID: 73518047}
+  - {fileID: 801639167}
+  - {fileID: 224886724}
+  - {fileID: 167851245}
+  - {fileID: 1682023160}
+  - {fileID: 773418677}
+  - {fileID: 495649248}
+  - {fileID: 7663678}
+  - {fileID: 1080788318}
+  - {fileID: 1642862757}
+  - {fileID: 663550299}
+  - {fileID: 870253523}
+  - {fileID: 703340664}
+  - {fileID: 108004337}
+  - {fileID: 814859978}
+  - {fileID: 1795098684}
+  - {fileID: 704613649}
+  - {fileID: 1008931328}
+  - {fileID: 929399385}
+  - {fileID: 1310091974}
+  - {fileID: 1739777840}
+  - {fileID: 1165494393}
+  - {fileID: 166137948}
+  - {fileID: 1541449755}
   items:
-  - id: 101
-    name: "\uB098\uBB34\uC6D0\uBAA9"
-    description: "\uC0B4\uC544\uC788\uB294 \uB098\uBB34\uC758 \uBAB8\uD1B5\uC744
-      \uBCA0\uC5B4\uB0B8 \uB098\uBB34\uC758 \uC6D0\uBAA9\uC774\uB2E4."
-    icon: {fileID: -2244050106524875057, guid: d4677c1540de410488b63ea0bbff45ba, type: 3}
-    maxCount: 99
-    isUseable: 0
   - id: 0
     name: 
     description: 
-    icon: {fileID: -2244050106524875057, guid: d4677c1540de410488b63ea0bbff45ba, type: 3}
+    icon: {fileID: 0}
     maxCount: 0
     isUseable: 0
-  itemSlot:
-  - {fileID: 807913771}
-  - {fileID: 511098527}
-  - {fileID: 935508474}
-  - {fileID: 1066421664}
-  - {fileID: 710972385}
-  - {fileID: 1102906385}
-  - {fileID: 970334593}
-  - {fileID: 282113699}
-  - {fileID: 637127166}
-  - {fileID: 601581851}
-  - {fileID: 1954261634}
-  - {fileID: 392453909}
-  - {fileID: 18935966}
-  - {fileID: 1159875260}
-  - {fileID: 2141428704}
-  - {fileID: 1371077954}
-  - {fileID: 73518045}
-  - {fileID: 801639165}
-  - {fileID: 224886722}
-  - {fileID: 167851243}
+  - id: 101
+    name: "\uB098\uBB34\uC6D0\uBAA9"
+    description: "\uC0B4\uC544\uC788\uB358 \uB098\uBB34\uB97C \uBCA0\uC5B4 \uC5BB\uC5B4\uB0B8
+      \uC2F1\uC2F1\uD55C \uC6D0\uBAA9\uC774\uB2E4."
+    icon: {fileID: -2244050106524875057, guid: d4677c1540de410488b63ea0bbff45ba, type: 3}
+    maxCount: 99
+    isUseable: 0
+  inventory: {fileID: 792312633}
+  storage: {fileID: 1624968470}
+  slotIndex: -1
 --- !u!1 &962649390
 GameObject:
   m_ObjectHideFlags: 0
@@ -15463,7 +15499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &970334593
 GameObject:
@@ -15632,8 +15667,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
+--- !u!1 &981299719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981299720}
+  - component: {fileID: 981299722}
+  - component: {fileID: 981299721}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &981299720
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981299719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1649686220}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 0, y: -6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &981299721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981299719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: c761f127961348f4abf52f3b583ff5c4, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\uC790\uB3D9 \uB123\uAE30"
+--- !u!222 &981299722
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981299719}
+  m_CullTransparentMesh: 1
 --- !u!1 &1001015994
 GameObject:
   m_ObjectHideFlags: 0
@@ -15834,7 +15947,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1009916675
 GameObject:
@@ -16619,7 +16731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1107990454
 GameObject:
@@ -17424,7 +17535,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1263432441
 GameObject:
@@ -17596,7 +17706,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1274277855
 GameObject:
@@ -17985,7 +18094,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1354608757
 GameObject:
@@ -18272,7 +18380,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1476929665
 GameObject:
@@ -18365,7 +18472,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1488606595
 GameObject:
@@ -18496,7 +18602,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1521203071
 GameObject:
@@ -19046,7 +19151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1552433333
 GameObject:
@@ -19712,74 +19816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4687938b2c88dc949948d80c3344b9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  slots:
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  - id: 0
-    count: 0
-  slotImages:
-  - {fileID: 1682023160}
-  - {fileID: 773418677}
-  - {fileID: 495649248}
-  - {fileID: 7663678}
-  - {fileID: 1080788318}
-  - {fileID: 1642862757}
-  - {fileID: 663550299}
-  - {fileID: 870253523}
-  - {fileID: 703340664}
-  - {fileID: 108004337}
-  - {fileID: 814859978}
-  - {fileID: 1795098684}
-  - {fileID: 704613649}
-  - {fileID: 1008931328}
-  - {fileID: 929399385}
-  - {fileID: 1310091974}
-  - {fileID: 1739777840}
-  - {fileID: 1165494393}
-  - {fileID: 166137948}
-  - {fileID: 1541449755}
-  manager: {fileID: 957246666}
+  itemManager: {fileID: 957246667}
   userInterfaceManager: {fileID: 957246662}
   subInventory: {fileID: 0}
-  invType: 1
-  slotIndex: -1
-  dragging: 0
 --- !u!1 &1633578987
 GameObject:
   m_ObjectHideFlags: 0
@@ -19935,6 +19974,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642862755}
   m_CullTransparentMesh: 1
+--- !u!1 &1649686219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649686220}
+  - component: {fileID: 1649686223}
+  - component: {fileID: 1649686222}
+  - component: {fileID: 1649686221}
+  m_Layer: 5
+  m_Name: InputButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1649686220
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649686219}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 981299720}
+  m_Father: {fileID: 792312630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 10}
+  m_SizeDelta: {x: 80, y: 30}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1649686221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649686219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1649686222}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 957246662}
+        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1649686222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649686219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -766422060036826523, guid: 305dc6ecd8a6afa449d62916b45e52a4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1649686223
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649686219}
+  m_CullTransparentMesh: 1
 --- !u!1 &1653366815
 GameObject:
   m_ObjectHideFlags: 0
@@ -20026,7 +20198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1657806684
 GameObject:
@@ -20198,7 +20369,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1674792652
 GameObject:
@@ -21158,7 +21328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1812379634
 GameObject:
@@ -21251,7 +21420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1817594310
 GameObject:
@@ -21943,7 +22111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1960660681
 GameObject:
@@ -22036,7 +22203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &1999130542
 GameObject:
@@ -22129,7 +22295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &2002058235
 GameObject:
@@ -22821,7 +22986,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &2035099108
 GameObject:
@@ -22914,7 +23078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
   slotImage: {fileID: 0}
-  invType: 0
   inventory: {fileID: 0}
 --- !u!1 &2046442886
 GameObject:

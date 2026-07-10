@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     // 컴포넌트
     Rigidbody2D rigid;
     Animator animator;
-    GameManager gameManager;
+    GameManager manager;
 
     // 플랫폼 충돌 판정
     RaycastHit2D rayhitGround;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         // 컴포넌트 참조
         rigid = GetComponent<Rigidbody2D>();
         animator = visual.GetComponent<Animator>();
-        gameManager = managers.GetComponent<GameManager>();
+        manager = managers.GetComponent<GameManager>();
 
         // 초기값
         currentState = PlayerState.Idle;
@@ -174,6 +174,9 @@ public class Player : MonoBehaviour
     {
         if(currentTriggers.Contains(other))
             currentTriggers.Remove(other);
+
+        if (manager.itemManager.storage.GetActive() && other.CompareTag("Chest"))
+            manager.userInterfaceManager.StorageClose();
     }
 
     private IEnumerator ActionCooldownCo(PlayerState actionState, float cooldownTime)
@@ -212,7 +215,7 @@ public class Player : MonoBehaviour
         gauge.SetActive(false);
 
         animator.SetBool("isCrop", false);
-        gameManager.AddItem(101, 50);
+        manager.AddItem(101, 50);
         currentState = PlayerState.Idle;
     }
 
@@ -270,7 +273,7 @@ public class Player : MonoBehaviour
             else if(targetTrigger.CompareTag("Chest"))
             {
                 // Chest 상호작용
-                Debug.Log("Interacting with Chest: " + targetTrigger.name);
+                manager.userInterfaceManager.StorageOpen();
             }
         }
     }

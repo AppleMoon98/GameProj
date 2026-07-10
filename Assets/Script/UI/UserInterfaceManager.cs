@@ -1,19 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class Slot
-{
-    public int id = 0;
-    public int count = 0;
-}
-
-
 public class UserInterfaceManager : MonoBehaviour
 {
-    public Inventory inventory;
-    public Inventory storage;
+    public bool dragging = false;
     public GameObject tooltip;
+
+    [SerializeField] ItemManager itemManager;
     [SerializeField] GameObject escMenu;
 
     public void OpenTooltip(string title, string content, Vector3 position)
@@ -46,19 +39,23 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void OnInventory()
     {
-        if (inventory.GetActive())
-            CloseTooltip();
-
-        inventory.SetActive(!inventory.GetActive());
-        if(inventory.subInventory.GetComponent<SubInventory>().gameObject.activeSelf)
-            inventory.subInventory.GetComponent<SubInventory>().OnExit();
+        itemManager.InventorySwitch();
     }
 
-    public void OnStorage()
+    public void StorageClose()
     {
-        if(storage.GetActive())
+        if(itemManager.storage.GetActive())
             CloseTooltip();
 
-        storage.SetActive(!storage.GetActive());
+        itemManager.storage.SetActive(!itemManager.storage.GetActive());
+    }
+
+    public void StorageOpen()
+    {
+        // 창고를 열 때, 인벤이 없으면 켜줌
+        if(!itemManager.inventory.GetActive())
+            itemManager.inventory.SetActive(true);
+
+        itemManager.storage.SetActive(true);
     }
 }
