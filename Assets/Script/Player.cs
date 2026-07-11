@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         rayMove = Vector2.right;
         isSprint = false;
     }
-    
+
     private void Update()
     {
         HandleFlip();
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
 
     void HandleFlip()
     {
-        if(currentState != PlayerState.Idle)
+        if (currentState != PlayerState.Idle)
             return;
 
         if (inputVec.x == 0)
@@ -172,11 +172,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(currentTriggers.Contains(other))
+        if (currentTriggers.Contains(other))
             currentTriggers.Remove(other);
 
-        if (manager.itemManager.storage.GetActive() && other.CompareTag("Chest"))
-            manager.userInterfaceManager.StorageClose();
+        if (manager != null && manager.itemManager.storage != null)
+            if (manager.itemManager.storage.GetActive() && other.CompareTag("Chest"))
+                manager.userInterfaceManager.StorageClose();
     }
 
     private IEnumerator ActionCooldownCo(PlayerState actionState, float cooldownTime)
@@ -194,7 +195,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(cooldownTime);
         animator.SetBool(animBool, false);
     }
-    
+
     private IEnumerator CropCo()
     {
         currentState = PlayerState.Crop;
@@ -202,9 +203,9 @@ public class Player : MonoBehaviour
 
         gauge.SetActive(true);
         gaugeBar.fillAmount = 0;
-        
+
         float timer = 0;
-        while(timer < cropCooldown)
+        while (timer < cropCooldown)
         {
             timer += Time.deltaTime;
             gaugeBar.fillAmount = timer / cropCooldown;
@@ -221,9 +222,9 @@ public class Player : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        if(currentState != PlayerState.Idle)
+        if (currentState != PlayerState.Idle)
         {
-            inputVec = Vector2.zero;   
+            inputVec = Vector2.zero;
             return;
         }
 
@@ -247,7 +248,7 @@ public class Player : MonoBehaviour
 
     void OnAttack()
     {
-        if(currentState != PlayerState.Idle)
+        if (currentState != PlayerState.Idle)
             return;
 
         StartCoroutine(ActionCooldownCo(PlayerState.Attack, attackCooldown));
@@ -256,7 +257,7 @@ public class Player : MonoBehaviour
 
     void OnInteract()
     {
-        if(currentTriggers.Count == 0)
+        if (currentTriggers.Count == 0)
         {
             Debug.Log("No interactable objects nearby.");
             return;
@@ -265,12 +266,12 @@ public class Player : MonoBehaviour
         if (currentTriggers.Count > 0)
         {
             Collider2D targetTrigger = currentTriggers[^1]; // 가장 최근에 들어온 트리거 선택
-            if(targetTrigger.CompareTag("Tree"))
+            if (targetTrigger.CompareTag("Tree"))
             {
                 // Tree 상호작용
                 Crop();
             }
-            else if(targetTrigger.CompareTag("Chest"))
+            else if (targetTrigger.CompareTag("Chest"))
             {
                 // Chest 상호작용
                 manager.userInterfaceManager.StorageOpen();

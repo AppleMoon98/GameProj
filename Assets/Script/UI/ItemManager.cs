@@ -22,15 +22,34 @@ public class Item
 
 public class ItemManager : MonoBehaviour
 {
+    private const int INVEN_MAX_COUNT = 20;
+
     public UserInterfaceManager userInterfaceManager;
 
     public List<Slot> slots = new();
-    public List<Image> slotImages = new();
-    public List<Item> items = new();
+    public List<Inven_Slot> invenSlots = new();
+    public List<Item> items = new();    // 아이템은 나중에 txt나 xls로 빼거나 그냥 cs 새로 만들거나 할거임
 
     public Inventory inventory;
     public Inventory storage;
     public int slotIndex = -1;
+
+    // 정리되면 이걸로 처리할 것
+    //public Dictionary<int, Item> itemDic = new();
+    //private void Awake()
+    //{
+    //    foreach(var item in items)
+    //    {
+    //        itemDic[item.id] = item;
+    //    }
+    //}
+
+    // 기존: Item item = items.Find(x => x.id == src.id);
+    // 변경:
+    //if (itemDictionary.TryGetValue(src.id, out Item item))
+    //{
+    // 아이템을 찾았을 때의 처리
+    //}
 
     private void Start()
     {
@@ -41,14 +60,15 @@ public class ItemManager : MonoBehaviour
 
     private void SlotIndexUpdate()
     {
+        // ====================
+        // 1. Inven_Slot의 SlotIndex, SetActive 설정
+        // ====================
         for (int i = 0; i < slots.Count; i++)
         {
-            Inven_Slot inven_Slot = slotImages[i].GetComponentInParent<Inven_Slot>();
-            inven_Slot.slotIndex = i;
-            inven_Slot.slotImage.gameObject.SetActive(false);
+            invenSlots[i].slotIndex = i;
+            ReloadSlot(i, items.Find(x => x.id == slots[i].id));
         }
     }
-    // 아이템 슬롯들 값 지정
 
     public void InventorySwitch()
     {
@@ -64,13 +84,87 @@ public class ItemManager : MonoBehaviour
         if (inventory.subInventory.GetComponent<SubInventory>().gameObject.activeSelf)
             inventory.subInventory.GetComponent<SubInventory>().OnExit();
     }
-    // 인벤토리 열고 닫고
+
+    public void ReloadSlot(int slotIndex, Item item)
+    {
+        invenSlots[slotIndex].UpdateUI(item, slots[slotIndex].count);
+    }
+
+    public bool DropItem(int id, int count)
+    {
+        // ====================
+        // 0. 기본 설정
+        // ====================
+
+        // 말도 안되는 것들 리턴
+        if (count <= 0 || id <= 0) return false;
+
+        // 람다식으로 item값 서칭, 없으면 리턴
+        Item item = items.Find(x => x.id == id);
+        if (item == null) return false;
+
+        int temp = 0;           // 1번에선 사용 가능한 공간 수, 나머지는 필요한 값
+
+        // ====================
+        // 1. 사용 가능한 공간 체크
+        // ====================
+        for (int i = 0; i < INVEN_MAX_COUNT; i++)
+        {
+            if (slots[i].id == item.id)
+                temp += (item.maxCount - slots[i].count);
+            else if (slots[i].id == 0)
+                temp += item.maxCount;
+        }
+
+        // 획득 아이템 수보다 낮으면 return
+        if (temp < count)
+            return false;
+
+        // ====================
+        // 2. 같은 아이템 슬롯 채움
+        // ====================
+        for (int i = 0; i < INVEN_MAX_COUNT; i++)
+        {
+            if (count <= 0) break;
+
+            Slot slot = slots[i];
+            if (slot.id != item.id || slot.count >= item.maxCount)
+                continue;
+
+            temp = Mathf.Min(item.maxCount - slot.count, count);
+            slot.count += temp;
+            count -= temp;
+
+            ReloadSlot(i, item);
+        }
+
+        // ====================
+        // 3. 마무리로 빈 슬롯 채움
+        // ====================
+        for (int i = 0; i < INVEN_MAX_COUNT; i++)
+        {
+            if (count <= 0) break;
+
+            Slot slot = slots[i];
+            if (slot.id != 0)
+                continue;
+
+            slot.id = item.id;
+            temp = Mathf.Min(item.maxCount, count);
+            slot.count = temp;
+            count -= temp;
+
+            ReloadSlot(i, item);
+        }
+
+        return true;
+    }
 
     public void SlotChange(int slotIndex)
     {
-        // this.slotIndex → 기존 슬롯 Index / sloIndex → 이동할 슬롯
-        // src → 기존 / dest → 이동
-        // bool 값의 경우 T → 창고 / F → 인벤토리
+        // ====================
+        // 0. 기본 설정
+        // ====================
 
         // 슬롯 인덱스가 같거나, -1이거나, 비어있으면 return
         if (slotIndex == this.slotIndex || slotIndex == -1 || this.slotIndex == -1 || slots[this.slotIndex].id == 0)
@@ -83,185 +177,52 @@ public class ItemManager : MonoBehaviour
         Slot src = slots[this.slotIndex];
         Slot dest = slots[slotIndex];
 
-        // true -> 창고, false -> 인벤토리
-        bool isSrc = this.slotIndex >= 20;
-        bool isDest = slotIndex >= 20;
-
         Item srcItemData = items.Find(x => x.id == src.id);
         Item destItemData = items.Find(x => x.id == dest.id);
 
-        // ====================
-        // 인벤토리 및 창고 구현
-        // ====================
-        // 1. 창고 : 최대 개수 무제한
-        // 2. 인벤토리 : 최대 개수 제한
-        // 조건 순서는 정상 -> 초과 순으로 작성
-        // ====================
+        // 창고 인벤 판단
+        int GetMaxCount(int index, Item item)
+        {
+            if (item == null) return 0;
+            return index >= INVEN_MAX_COUNT ? int.MaxValue : item.maxCount;
+        }
+
+        // 이동 종류에 따른 최대값 정의
+        int destCount = GetMaxCount(slotIndex, srcItemData);
 
         // ====================
-        // 1. 창고 -> 인벤토리
+        // 1. 이동
         // ====================
-        if (isSrc && !isDest)
-            // ====================
-            // 1-1. 빈 슬롯으로 이동 (이동 정상/초과)
-            // ====================
-            if (dest.id == 0)
-                if (src.count <= srcItemData.maxCount)
-                    MoveSlot(src, dest, src.count);
-                else
-                    MoveSlot(src, dest, srcItemData.maxCount);
-            // ====================
-            // 1-2. 같은 아이템으로 이동 (병합 정상/초과)
-            // ====================
-            else if (dest.id == src.id)
-                MergeSlot(src, dest, srcItemData.maxCount);
-            // ====================
-            // 1-3. 다른 아이템으로 이동 (스왑 정상/초과)
-            // ====================
-            else if (src.count <= srcItemData.maxCount)
-                SwapSlot(src, dest);
-            else
-                Debug.Log("스왑 불가 / 1-3 else문 참고");
-        // ====================
-        // 2. 인벤토리 -> 창고
-        // ====================
-        else if (!isSrc && isDest)
-            // ====================
-            // 2-1. 빈 슬롯으로 이동 (이동 정상)
-            // ====================
-            if (dest.id == 0)
-                MoveSlot(src, dest, src.count);
-            // ====================
-            // 2-2. 같은 아이템으로 이동 (병합 정상)
-            // ====================
-            else if (dest.id == src.id)
-                MergeSlot(src, dest, int.MaxValue);
-            // ====================
-            // 2-3. 다른 아이템으로 이동 (스왑 정상/초과)
-            // ====================
-            else if (dest.count <= destItemData.maxCount)
-                SwapSlot(src, dest);
-            else
-                Debug.Log("스왑 불가 / 2-3 else문 참고");
-        // ====================
-        // 3. 내부 이동: 창고 -> 창고
-        // ====================
-        else if (isSrc && isDest)
-            // ====================
-            // 3-1. 빈 슬롯으로 이동 (이동 정상)
-            // ====================
-            if (dest.id == 0)
-                MoveSlot(src, dest, src.count);
-            // ====================
-            // 3-2. 같은 아이템으로 이동 (병합 정상)
-            // ====================
-            else if (dest.id == src.id)
-                MergeSlot(src, dest, int.MaxValue);
-            // ====================
-            // 3-3. 다른 아이템으로 이동 (스왑 정상)
-            // ====================
-            else
-                SwapSlot(src, dest);
-        // ====================
-        // 4. 내부 이동: 인벤토리 -> 인벤토리
-        // ====================
-        else if (!isSrc && !isDest)
-            // ====================
-            // 4-1. 빈 슬롯으로 이동 (이동 정상)
-            // ====================
-            if (dest.id == 0)
-                MoveSlot(src, dest, src.count);
-            // ====================
-            // 4-2. 같은 아이템으로 이동 (병합 정상, 초과 스왑)
-            // ====================
-            else if (dest.id == src.id)
-            {
-                int temp = srcItemData.maxCount - dest.count;
-                if (temp > 0)
-                    MergeSlot(src, dest, srcItemData.maxCount);
-                else
-                    SwapSlot(src, dest);
-            }
-            // ====================
-            // 4-3. 다른 아이템으로 이동 (스왑 정상)
-            // ====================
-            else
-                SwapSlot(src, dest);
+        if (dest.id == 0)
+            MoveSlot(src, dest, Mathf.Min(src.count, destCount));
 
-        ReloadFilter(this.slotIndex);
-        ReloadFilter(slotIndex);
+        // ====================
+        // 2. 병합
+        // ====================
+        else if (dest.id == src.id)
+            MergeSlot(src, dest, destCount);
+
+        // ====================
+        // 3. 스왑
+        // ====================
+        else
+        {
+            int swapMaxCount = GetMaxCount(this.slotIndex, destItemData);
+            if (src.count <= destCount && dest.count <= swapMaxCount)
+                SwapSlot(src, dest);
+            else
+                Debug.Log("[ERROR] 최대 수량을 초과함 : ItemManager.SlotChange");
+        }
+
+        // ====================
+        // 4. UI 갱신 및 초기화
+        // ====================
+        srcItemData = items.Find(x => x.id == src.id);
+        destItemData = items.Find(x => x.id == dest.id);
+        ReloadSlot(this.slotIndex, srcItemData);
+        ReloadSlot(slotIndex, destItemData);
         this.slotIndex = -1;
     }
-    // 슬롯의 아이템을 교환하는 메서드
-
-    public void ReloadSlot(int slotIndex)
-    {
-        Item item = items.Find(x => x.id == slots[slotIndex].id);
-
-        slotImages[slotIndex].sprite = item.icon;
-        slotImages[slotIndex].GetComponentInChildren<Text>().text = slots[slotIndex].count.ToString();
-        slotImages[slotIndex].gameObject.SetActive(true);
-    }
-    // 인벤토리 슬롯을 새로고침하는 메서드. 슬롯에 아이템이 없으면 해당 슬롯 이미지를 비활성화합니다
-
-    public void ReloadFilter(int slotIndex)
-    {
-        if (slots[slotIndex].id != 0)
-            ReloadSlot(slotIndex);
-        else
-            slotImages[slotIndex].gameObject.SetActive(false);
-    }
-    // 인벤토리 슬롯의 아이콘을 새로고침하는 메서드. ReloadSlot으로 연결됨
-
-    public bool AddItem(int id, int count)
-    {
-        Item item = items.Find(x => x.id == id);
-        if (item == null) return false;
-
-        // 같은 아이템이 있는 슬롯을 먼저 찾고, 그 슬롯에 추가할 수 있는지 확인
-        for (int i = 0; i < 20; i++)
-        {
-            Slot slot = slots[i];
-
-            if (slot.id != item.id)
-                continue;
-
-            if (slot.count >= item.maxCount)
-                continue;
-
-            int canAdd = item.maxCount - slot.count;
-            int add = canAdd > count ? count : canAdd;
-
-            slot.count += add;
-            count -= add;
-            ReloadSlot(i);
-
-            if (count == 0)
-                return true;
-        }
-
-        // 빈 슬롯을 찾아서 아이템을 추가
-        for (int i = 0; i < 20; i++)
-        {
-            Slot slot = slots[i];
-
-            if (slot.id != 0)
-                continue;
-
-            slot.id = item.id;
-
-            int add = item.maxCount > count ? count : item.maxCount;
-            slot.count = add;
-            count -= add;
-            ReloadSlot(i);
-
-            if (count < 1)
-                return true;
-        }
-
-        return false;
-    }
-    // 아이템을 인벤토리에 추가하는 메서드
 
     private void MoveSlot(Slot src, Slot dest, int amount)
     {
@@ -272,7 +233,6 @@ public class ItemManager : MonoBehaviour
         if (src.count <= 0)
             src.id = 0;
     }
-    // 슬롯 체인지 - 이동
 
     private void MergeSlot(Slot src, Slot dest, int maxCount)
     {

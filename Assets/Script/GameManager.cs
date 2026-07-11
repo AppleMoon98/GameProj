@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(int id, int count)
     {
-        itemManager.AddItem(id, count);
+        itemManager.DropItem(id, count);
     }
     // 아이템 획득하였을 때 불러오는 코드
 }

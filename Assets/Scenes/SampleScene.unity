@@ -361,7 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &38160291
 GameObject:
@@ -532,7 +533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &57934081
 GameObject:
@@ -1490,7 +1492,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &171425140
 GameObject:
@@ -1909,7 +1912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &218247031
 GameObject:
@@ -2115,7 +2119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &230134394
 GameObject:
@@ -3126,7 +3131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &392453909
 GameObject:
@@ -3427,7 +3433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &442207146
 GameObject:
@@ -3485,7 +3492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &461400795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10872,7 +10879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &559095991
 GameObject:
@@ -10964,7 +10972,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &569013238
 GameObject:
@@ -11056,7 +11065,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &574465592
 GameObject:
@@ -11148,7 +11158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &583590074
 GameObject:
@@ -11761,7 +11772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &656817095
 GameObject:
@@ -11892,7 +11904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &663550297
 GameObject:
@@ -12729,7 +12742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &744617143
 GameObject:
@@ -13139,7 +13153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &792312629
 GameObject:
@@ -13326,7 +13341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &801639165
 GameObject:
@@ -14479,7 +14495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &905282912
 GameObject:
@@ -14611,7 +14628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &928270530
 GameObject:
@@ -14703,7 +14721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &929399383
 GameObject:
@@ -14947,7 +14966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &953909305
 GameObject:
@@ -15271,54 +15291,48 @@ MonoBehaviour:
     count: 0
   - id: 0
     count: 0
-  slotImages:
-  - {fileID: 807913773}
-  - {fileID: 511098529}
-  - {fileID: 935508476}
-  - {fileID: 1066421666}
-  - {fileID: 710972387}
-  - {fileID: 1102906387}
-  - {fileID: 970334595}
-  - {fileID: 282113701}
-  - {fileID: 637127168}
-  - {fileID: 601581853}
-  - {fileID: 1954261636}
-  - {fileID: 392453911}
-  - {fileID: 18935968}
-  - {fileID: 1159875262}
-  - {fileID: 2141428706}
-  - {fileID: 1371077956}
-  - {fileID: 73518047}
-  - {fileID: 801639167}
-  - {fileID: 224886724}
-  - {fileID: 167851245}
-  - {fileID: 1682023160}
-  - {fileID: 773418677}
-  - {fileID: 495649248}
-  - {fileID: 7663678}
-  - {fileID: 1080788318}
-  - {fileID: 1642862757}
-  - {fileID: 663550299}
-  - {fileID: 870253523}
-  - {fileID: 703340664}
-  - {fileID: 108004337}
-  - {fileID: 814859978}
-  - {fileID: 1795098684}
-  - {fileID: 704613649}
-  - {fileID: 1008931328}
-  - {fileID: 929399385}
-  - {fileID: 1310091974}
-  - {fileID: 1739777840}
-  - {fileID: 1165494393}
-  - {fileID: 166137948}
-  - {fileID: 1541449755}
+  invenSlots:
+  - {fileID: 2021613542}
+  - {fileID: 1960660685}
+  - {fileID: 914542849}
+  - {fileID: 427924398}
+  - {fileID: 963033349}
+  - {fileID: 789075752}
+  - {fileID: 1999130546}
+  - {fileID: 928270534}
+  - {fileID: 533263893}
+  - {fileID: 1267824047}
+  - {fileID: 2035099112}
+  - {fileID: 559095995}
+  - {fileID: 371493211}
+  - {fileID: 637515586}
+  - {fileID: 1009441822}
+  - {fileID: 41676342}
+  - {fileID: 1476929669}
+  - {fileID: 168201534}
+  - {fileID: 200225758}
+  - {fileID: 735076641}
+  - {fileID: 21505088}
+  - {fileID: 1800998756}
+  - {fileID: 978974536}
+  - {fileID: 1548497145}
+  - {fileID: 1103340791}
+  - {fileID: 569013243}
+  - {fileID: 1812379639}
+  - {fileID: 902973361}
+  - {fileID: 797254116}
+  - {fileID: 946418292}
+  - {fileID: 574465597}
+  - {fileID: 1494415100}
+  - {fileID: 225953076}
+  - {fileID: 659512092}
+  - {fileID: 1255706170}
+  - {fileID: 1335588742}
+  - {fileID: 1653366820}
+  - {fileID: 1957475655}
+  - {fileID: 1469694244}
+  - {fileID: 1669552877}
   items:
-  - id: 0
-    name: 
-    description: 
-    icon: {fileID: 0}
-    maxCount: 0
-    isUseable: 0
   - id: 101
     name: "\uB098\uBB34\uC6D0\uBAA9"
     description: "\uC0B4\uC544\uC788\uB358 \uB098\uBB34\uB97C \uBCA0\uC5B4 \uC5BB\uC5B4\uB0B8
@@ -15498,7 +15512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &970334593
 GameObject:
@@ -15666,7 +15681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &981299719
 GameObject:
@@ -15946,7 +15962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1009916675
 GameObject:
@@ -16730,7 +16747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1107990454
 GameObject:
@@ -17534,7 +17552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1263432441
 GameObject:
@@ -17705,7 +17724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1274277855
 GameObject:
@@ -18093,7 +18113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1354608757
 GameObject:
@@ -18379,7 +18400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1476929665
 GameObject:
@@ -18471,7 +18493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1488606595
 GameObject:
@@ -18601,7 +18624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1521203071
 GameObject:
@@ -18922,7 +18946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1537460321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19150,7 +19174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1552433333
 GameObject:
@@ -19992,7 +20017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1649686220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20197,7 +20222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1657806684
 GameObject:
@@ -20368,7 +20394,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1674792652
 GameObject:
@@ -21327,7 +21354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1812379634
 GameObject:
@@ -21419,7 +21447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1817594310
 GameObject:
@@ -21673,7 +21702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1854039831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22110,7 +22139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1960660681
 GameObject:
@@ -22202,7 +22232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1999130542
 GameObject:
@@ -22294,7 +22325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &2002058235
 GameObject:
@@ -22985,7 +23017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &2035099108
 GameObject:
@@ -23077,7 +23110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
   slotIndex: 0
-  slotImage: {fileID: 0}
+  iconImg: {fileID: 0}
+  countTxt: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &2046442886
 GameObject:
