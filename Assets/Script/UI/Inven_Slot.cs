@@ -9,14 +9,14 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public Text countTxt;
     public Inventory inventory;
 
-    void Awake()
+    public void VariableSetting()
     {
         // 아이콘과 텍스트 추적
         Transform image = transform.GetChild(0);
         iconImg = image.GetComponent<Image>();
         countTxt = image.GetChild(0).GetComponent<Text>();
-
-        inventory = GetComponentInParent<Inventory>();
+        
+        inventory = transform.GetComponentInParent<Inventory>(true);
     }
 
     public void UpdateUI(Item item, int count)

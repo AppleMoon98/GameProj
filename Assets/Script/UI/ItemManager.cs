@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,10 +52,10 @@ public class ItemManager : MonoBehaviour
     // 아이템을 찾았을 때의 처리
     //}
 
-    private void Start()
+    private void Awake()
     {
-        // 다른 오브젝트 Awake()에서 inventory, storage 오브젝트를 찾아서 참조해야함
-        // 해당 메서드를 Awake()에서 실행하게 되면 오류가 남
+        for (int i = 0; i < invenSlots.Count; i++)
+            invenSlots[i].VariableSetting();
         SlotIndexUpdate();
     }
 
@@ -78,7 +79,7 @@ public class ItemManager : MonoBehaviour
 
         // 창고와 인벤이 동시에 켜져있을 때 I 누르면
         if (storage.GetActive() && inventory.GetActive())
-            storage.SetActive(false);
+            userInterfaceManager.StorageClose();
 
         inventory.SetActive(!inventory.GetActive());
         if (inventory.subInventory.GetComponent<SubInventory>().gameObject.activeSelf)
@@ -88,6 +89,26 @@ public class ItemManager : MonoBehaviour
     public void ReloadSlot(int slotIndex, Item item)
     {
         invenSlots[slotIndex].UpdateUI(item, slots[slotIndex].count);
+    }
+
+    public void ItemDuplicateInput()
+    {
+        for(int i = 0; i < INVEN_MAX_COUNT; i++)
+        {
+            if (slots[i].id == 0)
+                continue;
+
+            for(int j = INVEN_MAX_COUNT; j < slots.Count; j++)
+            {
+                if (slots[i].id == slots[j].id)
+                {
+                    MergeSlot(slots[i], slots[j], int.MaxValue);
+                    ReloadSlot(i, null);
+                    ReloadSlot(j, items.Find(x => x.id == slots[j].id));
+                    break;
+                }
+            }
+        }
     }
 
     public bool DropItem(int id, int count)
@@ -181,7 +202,7 @@ public class ItemManager : MonoBehaviour
         Item destItemData = items.Find(x => x.id == dest.id);
 
         // 창고 인벤 판단
-        int GetMaxCount(int index, Item item)
+        static int GetMaxCount(int index, Item item)
         {
             if (item == null) return 0;
             return index >= INVEN_MAX_COUNT ? int.MaxValue : item.maxCount;
@@ -207,8 +228,8 @@ public class ItemManager : MonoBehaviour
         // ====================
         else
         {
-            int swapMaxCount = GetMaxCount(this.slotIndex, destItemData);
-            if (src.count <= destCount && dest.count <= swapMaxCount)
+            int srcCount = GetMaxCount(this.slotIndex, destItemData);
+            if (src.count <= destCount && dest.count <= srcCount)
                 SwapSlot(src, dest);
             else
                 Debug.Log("[ERROR] 최대 수량을 초과함 : ItemManager.SlotChange");
@@ -245,7 +266,6 @@ public class ItemManager : MonoBehaviour
         if (src.count <= 0)
             src.id = 0;
     }
-    // 슬롯 체인지 - 병합
 
     private void SwapSlot(Slot src, Slot dest)
     {
@@ -258,5 +278,6 @@ public class ItemManager : MonoBehaviour
         dest.id = tempId;
         dest.count = tempCount;
     }
-    // 슬롯 체인지 - 스왑
+
+    
 }

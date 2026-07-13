@@ -12159,7 +12159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractObject
   highlight: {fileID: 171425140}
-  interactionType: 0
+  interactionType: 2
 --- !u!1 &699861447
 GameObject:
   m_ObjectHideFlags: 0
@@ -13174,7 +13174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792312630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15051,9 +15051,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: OnInventory
+      - m_Target: {fileID: 957246667}
+        m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
+        m_MethodName: InventorySwitch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15137,6 +15137,7 @@ MonoBehaviour:
   tooltip: {fileID: 845913034}
   itemManager: {fileID: 957246667}
   escMenu: {fileID: 194165436}
+  inputButton: {fileID: 1649686219}
 --- !u!4 &957246663
 Transform:
   m_ObjectHideFlags: 0
@@ -19767,7 +19768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1624968467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20082,9 +20083,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: OnInventory
+      - m_Target: {fileID: 957246667}
+        m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
+        m_MethodName: ItemDuplicateInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

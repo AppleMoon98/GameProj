@@ -177,7 +177,8 @@ public class Player : MonoBehaviour
 
         if (manager != null && manager.itemManager.storage != null)
             if (manager.itemManager.storage.GetActive() && other.CompareTag("Chest"))
-                manager.userInterfaceManager.StorageClose();
+                if (other.TryGetComponent<InteractObject>(out var chest))
+                    manager.userInterfaceManager.StorageClose(chest);
     }
 
     private IEnumerator ActionCooldownCo(PlayerState actionState, float cooldownTime)
@@ -274,7 +275,8 @@ public class Player : MonoBehaviour
             else if (targetTrigger.CompareTag("Chest"))
             {
                 // Chest 상호작용
-                manager.userInterfaceManager.StorageOpen();
+                if (currentTarget is InteractObject chest)
+                    manager.userInterfaceManager.StorageOpen(chest);
             }
         }
     }

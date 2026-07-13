@@ -8,6 +8,9 @@ public class UserInterfaceManager : MonoBehaviour
 
     [SerializeField] ItemManager itemManager;
     [SerializeField] GameObject escMenu;
+    [SerializeField] GameObject inputButton;
+
+    private InteractObject openedChest;
 
     public void OpenTooltip(string title, string content, Vector3 position)
     {
@@ -44,18 +47,39 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void StorageClose()
     {
+        StorageClose(openedChest);
+    }
+
+    public void StorageClose(InteractObject chest)
+    {
         if(itemManager.storage.GetActive())
             CloseTooltip();
 
         itemManager.storage.SetActive(!itemManager.storage.GetActive());
+
+        if (chest != null)
+            chest.SetTrigger("isClose");
+        else if (openedChest != null)
+            openedChest.SetTrigger("isClose");
+        openedChest = null;
+
+        if (inputButton != null)
+            inputButton.SetActive(false);
     }
 
-    public void StorageOpen()
+    public void StorageOpen(InteractObject chest)
     {
         // 창고를 열 때, 인벤이 없으면 켜줌
         if(!itemManager.inventory.GetActive())
             itemManager.inventory.SetActive(true);
 
         itemManager.storage.SetActive(true);
+
+        openedChest = chest;
+        if (openedChest != null)
+            openedChest.SetTrigger("isOpen");
+
+        if (inputButton != null)
+            inputButton.SetActive(true);
     }
 }
