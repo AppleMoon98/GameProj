@@ -6,7 +6,8 @@ public enum InteractionType
 {
     NPC,
     Tree,
-    Chest
+    Chest,
+    CraftingTable
 }
 
 public class GameManager : MonoBehaviour

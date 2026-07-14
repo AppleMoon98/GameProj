@@ -72,6 +72,8 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (inventory == null) return;
+
         if (inventory.itemManager.slots[slotIndex].id == 0)
             return;
 
@@ -82,6 +84,8 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (inventory == null) return;
+
         if (inventory.itemManager.slots[slotIndex].id == 0)
             return;
 
