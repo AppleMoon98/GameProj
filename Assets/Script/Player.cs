@@ -14,17 +14,20 @@ public enum PlayerState
 public class Player : MonoBehaviour
 {
     // 설정
+    [Header("참조")]
     [SerializeField] GameObject managers;
     [SerializeField] Transform visual;
     [SerializeField] GameObject gauge;
     [SerializeField] Image gaugeBar;
+
+    [Header("설정값")]
     public Vector2 inputVec;
     public float speed;
     public float jumpPower;
     public float attackCooldown;
     public float cropCooldown;
 
-    // 테스트용
+    [Header("임시")]
     public float floatvalue;
 
     // 컴포넌트
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour
     RaycastHit2D rayhitWall;
     Vector2 rayMove;
 
-    // 상태
+    [Header("상태")]
     public PlayerState currentState;
     bool isSprint;
     Interactable currentTarget;

@@ -3,24 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class Slot
-{
-    public int id = 0;
-    public int count = 0;
-}
-
-[System.Serializable]
-public class Item
-{
-    public int id;
-    public string name;
-    public string description;
-    public Sprite icon;
-    public int maxCount = 99;
-    public bool isUseable = false;
-}
-
 public class ItemManager : MonoBehaviour
 {
     private const int INVEN_MAX_COUNT = 20;
