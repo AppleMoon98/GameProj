@@ -119,9 +119,11 @@ public class ItemManager : MonoBehaviour
                 temp += item.maxCount;
         }
 
-        // »πµÊ æ∆¿Ã≈€ ºˆ∫∏¥Ÿ ≥∑¿∏∏È return
+        // »πµÊ æ∆¿Ã≈€ ºˆ∫∏¥Ÿ ≥∑¿∏∏È ∞≠¡¶∑Œ »πµÊ∑Æ¿ª ≥∑√„
         if (temp < count)
-            return false;
+        {
+            count = temp;
+        }
 
         // ====================
         // 2. ∞∞¿∫ æ∆¿Ã≈€ ΩΩ∑‘ √§øÚ

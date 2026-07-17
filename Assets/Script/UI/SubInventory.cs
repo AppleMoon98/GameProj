@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 public class SubInventory : MonoBehaviour
@@ -11,8 +12,8 @@ public class SubInventory : MonoBehaviour
     public void OnActive(Item item)
     {
         itemImage.sprite = item.icon;
-        itemName.text = item.name;
-        itemDescription.text = item.description;
+        itemName.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.productName);
+        itemDescription.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.description);
         useButton.SetActive(item.isUseable);
         gameObject.SetActive(true);
     }

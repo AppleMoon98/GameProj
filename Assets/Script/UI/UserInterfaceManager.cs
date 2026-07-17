@@ -16,8 +16,13 @@ public class UserInterfaceManager : MonoBehaviour
     {
         tooltip.transform.GetChild(0).GetComponent<Text>().text = title;
         tooltip.transform.GetChild(1).GetComponent<Text>().text = content;
-        tooltip.transform.position = position;
+        tooltip.transform.position = position + new Vector3(20f, -20f, 0);
         tooltip.SetActive(true);
+    }
+
+    public void MoveTooltip(Vector3 position)
+    {
+        tooltip.transform.position = position + new Vector3(20f, -20f, 0);
     }
 
     public void CloseTooltip()

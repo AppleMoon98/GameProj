@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
-public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler, IPointerClickHandler
 {
     public int slotIndex;
     public Image iconImg;
@@ -15,7 +16,7 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         Transform image = transform.GetChild(0);
         iconImg = image.GetComponent<Image>();
         countTxt = image.GetChild(0).GetComponent<Text>();
-        
+
         inventory = transform.GetComponentInParent<Inventory>(true);
     }
 
@@ -42,7 +43,12 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         inventory.itemManager.slotIndex = slotIndex;
 
         if (iconImg != null)
+        {
             iconImg.raycastTarget = false;
+            // new code
+            iconImg.transform.SetParent(inventory.transform.parent);
+            iconImg.transform.SetAsLastSibling();
+        }
     }
     // 드래그 시작 시 슬롯 인덱스를 인벤토리로 보내고, 드래그 상태를 true
 
@@ -58,8 +64,11 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         if (iconImg != null)
+        {
             iconImg.raycastTarget = true;
-        iconImg.rectTransform.localPosition = Vector3.zero;
+            iconImg.transform.SetParent(this.transform);
+            iconImg.rectTransform.localPosition = Vector3.zero;
+        }
         inventory.userInterfaceManager.dragging = false;
     }
     // 드래그가 끝나면 이미지 위치를 원래대로 돌려놓고 드래그 상태를 false로 변경
@@ -78,9 +87,16 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             return;
 
         Item item = inventory.itemManager.items.Find(x => x.id == inventory.itemManager.slots[slotIndex].id);
-        inventory.userInterfaceManager.OpenTooltip(item.name, item.description, eventData.position);
+        string localizedName = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.productName);
+        string localizedDesc = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.description);
+        inventory.userInterfaceManager.OpenTooltip(localizedName, localizedDesc, eventData.position);
     }
     // 아이템 이미지 안으로 들어오면 툴팁 표시
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        inventory.userInterfaceManager.MoveTooltip(eventData.position);
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {

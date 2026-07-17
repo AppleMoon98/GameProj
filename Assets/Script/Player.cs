@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
         gauge.SetActive(false);
 
         animator.SetBool("isCrop", false);
-        manager.AddItem(101, 50);
+        manager.AddItem(101, 999);
         currentState = PlayerState.Idle;
     }
 
