@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Localization.Settings;
@@ -5,9 +6,12 @@ using UnityEngine.UI;
 
 public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [Header("기본")]
     public int slotIndex;
     public Image iconImg;
     public Text countTxt;
+
+    [Header("참조")]
     public Inventory inventory;
 
     public void VariableSetting()
@@ -31,7 +35,6 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         iconImg.sprite = item.icon;
         countTxt.text = count.ToString();
         iconImg.gameObject.SetActive(true);
-
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -86,7 +89,7 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         if (inventory.itemManager.slots[slotIndex].id == 0)
             return;
 
-        Item item = inventory.itemManager.items.Find(x => x.id == inventory.itemManager.slots[slotIndex].id);
+        Item item = Array.Find(inventory.itemManager.items, x => x.id == inventory.itemManager.slots[slotIndex].id);
         string localizedName = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.productName);
         string localizedDesc = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.description);
         inventory.userInterfaceManager.OpenTooltip(localizedName, localizedDesc, eventData.position);
@@ -117,7 +120,7 @@ public class Inven_Slot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         if (slotIndex >= 20)
             return;
 
-        Item item = inventory.itemManager.items.Find(x => x.id == inventory.itemManager.slots[slotIndex].id);
+        Item item = Array.Find(inventory.itemManager.items, x => x.id == inventory.itemManager.slots[slotIndex].id);
         inventory.subInventory.OnActive(item);
     }
     // 아이템 이미지를 선택 -> 서브 인벤 표시

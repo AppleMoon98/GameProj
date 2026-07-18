@@ -6,16 +6,6 @@ public class Inventory : MonoBehaviour
     public UserInterfaceManager userInterfaceManager;
     public SubInventory subInventory;
 
-    private void OnEnable()
-    {
-        Debug.Log(gameObject.name.Contains("Storage"));
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log(gameObject.name + " : OnDisable");
-    }
-
     public void SetActive(bool isActive)
     {
         gameObject.SetActive(isActive);

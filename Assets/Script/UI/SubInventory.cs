@@ -18,11 +18,6 @@ public class SubInventory : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void OnExit()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void OnUse()
     {
         // 사용시 작동할 코드 작성

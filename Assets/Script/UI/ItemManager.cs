@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,35 +10,22 @@ public class ItemManager : MonoBehaviour
 
     public UserInterfaceManager userInterfaceManager;
 
-    public List<Slot> slots = new();
-    public List<Inven_Slot> invenSlots = new();
-    public List<Item> items = new();    // 아이템은 나중에 txt나 xls로 빼거나 그냥 cs 새로 만들거나 할거임
+    public Slot[] slots;
+    public Inven_Slot[] invenSlots;
+    public Craft_Slot[] craftSlots;
+    public Item[] items;
 
     public Inventory inventory;
     public Inventory storage;
     public int slotIndex = -1;
 
-    // 정리되면 이걸로 처리할 것
-    //public Dictionary<int, Item> itemDic = new();
-    //private void Awake()
-    //{
-    //    foreach(var item in items)
-    //    {
-    //        itemDic[item.id] = item;
-    //    }
-    //}
-
-    // 기존: Item item = items.Find(x => x.id == src.id);
-    // 변경:
-    //if (itemDictionary.TryGetValue(src.id, out Item item))
-    //{
-    // 아이템을 찾았을 때의 처리
-    //}
-
     private void Awake()
     {
-        for (int i = 0; i < invenSlots.Count; i++)
+        for (int i = 0; i < invenSlots.Length; i++)
             invenSlots[i].VariableSetting();
+
+        for (int i = 0; i < craftSlots.Length; i++)
+            craftSlots[i].VariableSetting();
         SlotIndexUpdate();
     }
 
@@ -46,10 +34,10 @@ public class ItemManager : MonoBehaviour
         // ====================
         // 1. Inven_Slot의 SlotIndex, SetActive 설정
         // ====================
-        for (int i = 0; i < slots.Count; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             invenSlots[i].slotIndex = i;
-            ReloadSlot(i, items.Find(x => x.id == slots[i].id));
+            ReloadSlot(i, Array.Find(items, x => x.id == slots[i].id));
         }
     }
 
@@ -65,32 +53,12 @@ public class ItemManager : MonoBehaviour
 
         inventory.SetActive(!inventory.GetActive());
         if (inventory.subInventory.GetComponent<SubInventory>().gameObject.activeSelf)
-            inventory.subInventory.GetComponent<SubInventory>().OnExit();
+            inventory.subInventory.GetComponent<SubInventory>().gameObject.SetActive(false);
     }
 
     public void ReloadSlot(int slotIndex, Item item)
     {
         invenSlots[slotIndex].UpdateUI(item, slots[slotIndex].count);
-    }
-
-    public void ItemDuplicateInput()
-    {
-        for(int i = 0; i < INVEN_MAX_COUNT; i++)
-        {
-            if (slots[i].id == 0)
-                continue;
-
-            for(int j = INVEN_MAX_COUNT; j < slots.Count; j++)
-            {
-                if (slots[i].id == slots[j].id)
-                {
-                    MergeSlot(slots[i], slots[j], int.MaxValue);
-                    ReloadSlot(i, null);
-                    ReloadSlot(j, items.Find(x => x.id == slots[j].id));
-                    break;
-                }
-            }
-        }
     }
 
     public bool DropItem(int id, int count)
@@ -103,7 +71,7 @@ public class ItemManager : MonoBehaviour
         if (count <= 0 || id <= 0) return false;
 
         // 람다식으로 item값 서칭, 없으면 리턴
-        Item item = items.Find(x => x.id == id);
+        Item item = System.Array.Find(items, x => x.id == id);
         if (item == null) return false;
 
         int temp = 0;           // 1번에선 사용 가능한 공간 수, 나머지는 필요한 값
@@ -121,9 +89,8 @@ public class ItemManager : MonoBehaviour
 
         // 획득 아이템 수보다 낮으면 강제로 획득량을 낮춤
         if (temp < count)
-        {
             count = temp;
-        }
+        item.count += count;
 
         // ====================
         // 2. 같은 아이템 슬롯 채움
@@ -182,8 +149,8 @@ public class ItemManager : MonoBehaviour
         Slot src = slots[this.slotIndex];
         Slot dest = slots[slotIndex];
 
-        Item srcItemData = items.Find(x => x.id == src.id);
-        Item destItemData = items.Find(x => x.id == dest.id);
+        Item srcItemData = Array.Find(items, x => x.id == src.id);
+        Item destItemData = Array.Find(items, x => x.id == dest.id);
 
         // 창고 인벤 판단
         static int GetMaxCount(int index, Item item)
@@ -222,8 +189,8 @@ public class ItemManager : MonoBehaviour
         // ====================
         // 4. UI 갱신 및 초기화
         // ====================
-        srcItemData = items.Find(x => x.id == src.id);
-        destItemData = items.Find(x => x.id == dest.id);
+        srcItemData = System.Array.Find(items, x => x.id == src.id);
+        destItemData = System.Array.Find(items, x => x.id == dest.id);
         ReloadSlot(this.slotIndex, srcItemData);
         ReloadSlot(slotIndex, destItemData);
         this.slotIndex = -1;

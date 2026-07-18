@@ -1591,10 +1591,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: StorageClose
-        m_Mode: 1
+      - m_Target: {fileID: 1624968466}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13982,7 +13982,6 @@ GameObject:
   - component: {fileID: 715350472}
   - component: {fileID: 715350475}
   - component: {fileID: 715350474}
-  - component: {fileID: 715350473}
   m_Layer: 5
   m_Name: Slot 3
   m_TagString: Untagged
@@ -14005,27 +14004,11 @@ RectTransform:
   - {fileID: 78090724}
   m_Father: {fileID: 880704336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 132.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &715350473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715350471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e225580e5d659f44baeeff617d6b1bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
-  slotIndex: 0
-  iconImg: {fileID: 0}
-  countTxt: {fileID: 0}
-  inventory: {fileID: 0}
 --- !u!114 &715350474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14323,7 +14306,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753926918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1985911441}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: OnCraftButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &753926918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14477,7 +14472,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -33, y: 65}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &772867336
 MonoBehaviour:
@@ -16279,7 +16274,7 @@ GameObject:
   - component: {fileID: 880704336}
   - component: {fileID: 880704337}
   m_Layer: 5
-  m_Name: SlotLine1
+  m_Name: SlotLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16302,10 +16297,10 @@ RectTransform:
   - {fileID: 715350472}
   m_Father: {fileID: 772867335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.5, y: -42.5}
-  m_SizeDelta: {x: 155, y: 45}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880704337
 MonoBehaviour:
@@ -16915,9 +16910,9 @@ RectTransform:
   m_Father: {fileID: 1635465278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: -12}
+  m_SizeDelta: {x: 15, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &943203657
 MonoBehaviour:
@@ -17260,10 +17255,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246667}
-        m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
-        m_MethodName: InventorySwitch
-        m_Mode: 1
+      - m_Target: {fileID: 792312629}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17542,6 +17537,7 @@ MonoBehaviour:
   - {fileID: 1957475655}
   - {fileID: 1469694244}
   - {fileID: 1669552877}
+  craftSlots: []
   items:
   - {fileID: 11400000, guid: ad99f68016b19ef4e98e9c2adde816e4, type: 2}
   inventory: {fileID: 792312633}
@@ -18818,7 +18814,7 @@ RectTransform:
   m_Father: {fileID: 1326219782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19559,7 +19555,6 @@ GameObject:
   - component: {fileID: 1177442472}
   - component: {fileID: 1177442475}
   - component: {fileID: 1177442474}
-  - component: {fileID: 1177442473}
   m_Layer: 5
   m_Name: Slot 2
   m_TagString: Untagged
@@ -19582,27 +19577,11 @@ RectTransform:
   - {fileID: 1999807200}
   m_Father: {fileID: 880704336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1177442473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177442471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e225580e5d659f44baeeff617d6b1bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
-  slotIndex: 0
-  iconImg: {fileID: 0}
-  countTxt: {fileID: 0}
-  inventory: {fileID: 0}
 --- !u!114 &1177442474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21394,9 +21373,9 @@ RectTransform:
   m_Father: {fileID: 1635465278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -12, y: 15}
+  m_SizeDelta: {x: 0, y: 15}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1476006053
 MonoBehaviour:
@@ -23272,7 +23251,7 @@ GameObject:
   - component: {fileID: 1635465280}
   - component: {fileID: 1635465279}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: SubCrafting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23477,7 +23456,7 @@ RectTransform:
   m_Father: {fileID: 2093857174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24536,10 +24515,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: StorageClose
-        m_Mode: 1
+      - m_Target: {fileID: 1985911437}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -25760,9 +25739,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: OnInventory
+      - m_Target: {fileID: 1985911441}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: OnNextButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25977,9 +25956,9 @@ RectTransform:
   m_Father: {fileID: 1635465278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -12, y: -12}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1894463142
 MonoBehaviour:
@@ -26519,9 +26498,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 957246662}
-        m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
-        m_MethodName: OnInventory
+      - m_Target: {fileID: 1985911441}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: OnBackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26874,7 +26853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1985911438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26954,7 +26933,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fe616ade547d541b4625d9025381e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crafting
+  gameManager: {fileID: 957246666}
+  itemManager: {fileID: 957246667}
+  userInterfaceManager: {fileID: 957246662}
   type: 0
+  items: []
+  QuantityText: {fileID: 1964608221}
+  ItemText: {fileID: 809664849}
+  CountText: {fileID: 862206586}
+  slots:
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  - id: 0
+    count: 0
+  icons:
+  - {fileID: 1655071135}
+  - {fileID: 928606282}
+  - {fileID: 265673022}
+  - {fileID: 2026320657}
+  - {fileID: 1413750757}
+  - {fileID: 1975129258}
+  - {fileID: 181698947}
+  - {fileID: 1129375759}
+  - {fileID: 2129350965}
+  - {fileID: 351551874}
 --- !u!1 &1999130542
 GameObject:
   m_ObjectHideFlags: 0
@@ -27318,10 +27336,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 516393311}
-        m_TargetAssemblyTypeName: SubInventory, Assembly-CSharp
-        m_MethodName: OnExit
-        m_Mode: 1
+      - m_Target: {fileID: 516393309}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -28282,7 +28300,6 @@ GameObject:
   - component: {fileID: 2059515238}
   - component: {fileID: 2059515241}
   - component: {fileID: 2059515240}
-  - component: {fileID: 2059515239}
   m_Layer: 5
   m_Name: Slot 1
   m_TagString: Untagged
@@ -28305,27 +28322,11 @@ RectTransform:
   - {fileID: 1318987634}
   m_Father: {fileID: 880704336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 22.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &2059515239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059515237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e225580e5d659f44baeeff617d6b1bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inven_Slot
-  slotIndex: 0
-  iconImg: {fileID: 0}
-  countTxt: {fileID: 0}
-  inventory: {fileID: 0}
 --- !u!114 &2059515240
 MonoBehaviour:
   m_ObjectHideFlags: 0

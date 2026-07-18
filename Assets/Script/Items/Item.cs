@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     public string productName;
     public string description;
     public Sprite icon;
+    public int count;
     public int maxCount = 99;
     public bool isUseable = false;
 
