@@ -16,7 +16,10 @@ MonoBehaviour:
   productName: 102_NAME
   description: 102_DESC
   icon: {fileID: -1355385047894353802, guid: 5967c7084aacdaa48bb817323251bfc6, type: 3}
+  count: 0
   maxCount: 99
   isUseable: 0
   type: 0
-  craftMaterials: []
+  craftMaterials:
+  - id: 101
+    count: 1

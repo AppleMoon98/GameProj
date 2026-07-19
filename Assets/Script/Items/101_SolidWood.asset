@@ -16,6 +16,7 @@ MonoBehaviour:
   productName: 101_NAME
   description: 101_DESC
   icon: {fileID: -2244050106524875057, guid: d4677c1540de410488b63ea0bbff45ba, type: 3}
+  count: 0
   maxCount: 99
   isUseable: 0
   type: 0

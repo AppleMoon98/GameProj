@@ -1,6 +1,7 @@
 using NUnit.Framework.Internal;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,7 @@ public class ItemManager : MonoBehaviour
     public UserInterfaceManager userInterfaceManager;
 
     public Slot[] slots;
-    public Inven_Slot[] invenSlots;
-    public Craft_Slot[] craftSlots;
+    public InvenSlot[] invenSlots;
     public Item[] items;
 
     public Inventory inventory;
@@ -23,9 +23,6 @@ public class ItemManager : MonoBehaviour
     {
         for (int i = 0; i < invenSlots.Length; i++)
             invenSlots[i].VariableSetting();
-
-        for (int i = 0; i < craftSlots.Length; i++)
-            craftSlots[i].VariableSetting();
         SlotIndexUpdate();
     }
 
@@ -230,5 +227,26 @@ public class ItemManager : MonoBehaviour
         dest.count = tempCount;
     }
 
-    
+    public void ItemDuplicateInput()
+    {
+        // ====================
+        // 인벤토리 자동넣기 버튼 기능
+        // ====================
+        for (int i = 0; i < INVEN_MAX_COUNT; i++)
+        {
+            if (slots[i].id == 0)
+                continue;
+
+            for (int j = INVEN_MAX_COUNT; j < slots.Length; j++)
+            {
+                if (slots[i].id == slots[j].id)
+                {
+                    MergeSlot(slots[i], slots[j], int.MaxValue);
+                    ReloadSlot(i, null);
+                    ReloadSlot(j, Array.Find(items, x => x.id == slots[j].id));
+                    break;
+                }
+            }
+        }
+    }
 }
