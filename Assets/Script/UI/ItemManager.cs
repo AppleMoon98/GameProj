@@ -22,8 +22,7 @@ public class ItemManager : MonoBehaviour
     private void Awake()
     {
         for (int i = 0; i < invenSlots.Length; i++)
-            invenSlots[i].VariableSetting();
-        SlotIndexUpdate();
+            SlotIndexUpdate();
     }
 
     private void SlotIndexUpdate()
@@ -33,7 +32,7 @@ public class ItemManager : MonoBehaviour
         // ====================
         for (int i = 0; i < slots.Length; i++)
         {
-            invenSlots[i].slotIndex = i;
+            invenSlots[i].VariableSetting(i);
             ReloadSlot(i, Array.Find(items, x => x.id == slots[i].id));
         }
     }
@@ -55,10 +54,10 @@ public class ItemManager : MonoBehaviour
 
     public void ReloadSlot(int slotIndex, Item item)
     {
-        invenSlots[slotIndex].UpdateUI(item, slots[slotIndex].count);
+        invenSlots[slotIndex].UpdateUI(slots[slotIndex].count, item);
     }
 
-    public bool DropItem(int id, int count)
+    public bool LootItem(int id, int count)
     {
         // ====================
         // 0. 기본 설정
@@ -127,6 +126,68 @@ public class ItemManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public bool DropItem(int id, int count)
+    {
+        // ====================
+        // 0. 기본 설정
+        // int id = 아이템 코드
+        // int count = 소모되는 개수
+        // return bool = false 개수 부족 / true 개수 충분
+        // ====================
+
+        // 말도 안되는 것들 리턴
+        if (count <= 0 || id <= 0) return false;
+
+        // 람다식으로 item값 서칭, 없으면 리턴
+        Item item = System.Array.Find(items, x => x.id == id);
+        if (item == null) return false;
+
+        int temp = 0;   // 다용도 변수
+
+        // ====================
+        // 1. 가지고 있는 아이템 검색
+        // temp = 현재 가진 해당 아이템 수
+        // ====================
+        for (int i = 0; i < slots.Length; i++)
+            if (slots[i].id == item.id)
+                temp += slots[i].count;
+
+        // 가진 아이템 수가 필요한 것보다 적을 경우 리턴
+        if (temp < count)
+            return false;
+
+        // ====================
+        // 2. 아이템 소모
+        // ====================
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (count <= 0) break;
+
+            Slot slot = slots[i];
+            if (slot.id != item.id)
+                continue;
+
+            temp = Mathf.Min(slot.count, count);
+            slot.count -= temp;
+            count -= temp;
+
+            if (slot.count == 0)
+                ReloadSlot(i, null);
+            else
+                ReloadSlot(i, item);
+        }
+
+        return true;
+    }
+
+    public void DropItem(int slotIndex)
+    {
+        if (slotIndex > slots.Length) return;
+
+        slots[slotIndex].id = 0;
+        slots[slotIndex].count = 0;
     }
 
     public void SlotChange(int slotIndex)

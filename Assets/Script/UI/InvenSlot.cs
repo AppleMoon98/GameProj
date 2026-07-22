@@ -14,17 +14,19 @@ public class InvenSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     [Header("참조")]
     public Inventory inventory;
 
-    public void VariableSetting()
+    public void VariableSetting(int index)
     {
-        // 아이콘과 텍스트 추적
+        // 내 기억상 Awake로 두면 순서상 문제로 오류가 발생할 수 있어서
+        // 다음과 같이 ItemManager를 경유해서 빼둔 것으로 기억함
         Transform image = transform.GetChild(0);
         iconImg = image.GetComponent<Image>();
         countTxt = image.GetChild(0).GetComponent<Text>();
 
         inventory = transform.GetComponentInParent<Inventory>(true);
+        slotIndex = index;
     }
 
-    public void UpdateUI(Item item, int count)
+    public void UpdateUI(int count, Item item)
     {
         if (item == null || item.id == 0)
         {
@@ -124,7 +126,7 @@ public class InvenSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             return;
 
         Item item = Array.Find(inventory.itemManager.items, x => x.id == inventory.itemManager.slots[slotIndex].id);
-        inventory.subInventory.OnActive(item);
+        inventory.subInventory.OnActive(item, slotIndex);
     }
     // 아이템 이미지를 선택 -> 서브 인벤 표시
 }

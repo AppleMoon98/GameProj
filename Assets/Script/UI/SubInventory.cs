@@ -8,9 +8,11 @@ public class SubInventory : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] Text itemName;
     [SerializeField] Text itemDescription;
+    [SerializeField] int slotIndex;
 
-    public void OnActive(Item item)
+    public void OnActive(Item item, int slotIndex)
     {
+        this.slotIndex = slotIndex;
         itemImage.sprite = item.icon;
         itemName.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.productName);
         itemDescription.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", item.description);

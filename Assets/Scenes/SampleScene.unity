@@ -11411,6 +11411,7 @@ MonoBehaviour:
   itemImage: {fileID: 1775180154}
   itemName: {fileID: 2019806388}
   itemDescription: {fileID: 699861450}
+  slotIndex: 0
 --- !u!114 &516393312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26566,6 +26567,7 @@ MonoBehaviour:
   gameManager: {fileID: 957246666}
   itemManager: {fileID: 957246667}
   userInterfaceManager: {fileID: 957246662}
+  pleyer: {fileID: 1760401334}
   content: {fileID: 772867335}
   slotPrefab: {fileID: 545796245891462080, guid: 805324de88a3346488acd7c3364c5137, type: 3}
   type: 0

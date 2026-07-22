@@ -17,6 +17,7 @@ public class Crafting : MonoBehaviour
     public GameManager gameManager;
     public ItemManager itemManager;
     public UserInterfaceManager userInterfaceManager;
+    public Player pleyer;
 
     [SerializeField] private Transform content;
     [SerializeField] private CraftSlot slotPrefab;
