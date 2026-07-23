@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
-public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler
+public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerMoveHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("기본")]
     public Item item;
@@ -56,6 +56,11 @@ public class CraftSlot : MonoBehaviour, IPointerEnterHandler, IPointerMoveHandle
         if (crafting == null) return;
 
         crafting.userInterfaceManager.CloseTooltip();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        crafting.ResultItemReload(item);
     }
     // 아이템 이미지 밖으로 나가면 툴팁 제거
 }

@@ -17197,6 +17197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   userInterfaceManager: {fileID: 957246662}
+  inventory: {fileID: 792312633}
+  storage: {fileID: 1624968470}
+  crafting: {fileID: 1985911441}
+  slotIndex: -1
   slots:
   - id: 0
     count: 0
@@ -17322,9 +17326,6 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: ad99f68016b19ef4e98e9c2adde816e4, type: 2}
   - {fileID: 11400000, guid: b57d62264123fae4db63b584c0b56d5b, type: 2}
-  inventory: {fileID: 792312633}
-  storage: {fileID: 1624968470}
-  slotIndex: -1
 --- !u!1 &962649390
 GameObject:
   m_ObjectHideFlags: 0
@@ -26571,11 +26572,11 @@ MonoBehaviour:
   content: {fileID: 772867335}
   slotPrefab: {fileID: 545796245891462080, guid: 805324de88a3346488acd7c3364c5137, type: 3}
   type: 0
-  CountText: {fileID: 862206586}
-  ResultItem: {fileID: 0}
-  ResultIcon: {fileID: 2050578710}
-  QuantityText: {fileID: 1964608221}
-  ItemText: {fileID: 809664849}
+  countText: {fileID: 862206586}
+  resultItem: {fileID: 0}
+  resultIcon: {fileID: 2050578710}
+  quantityText: {fileID: 1964608221}
+  itemText: {fileID: 809664849}
   slots:
   - id: 0
     count: 0

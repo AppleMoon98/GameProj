@@ -9,20 +9,28 @@ public class ItemManager : MonoBehaviour
 {
     private const int INVEN_MAX_COUNT = 20;
 
+    [Header("참조")]
     public UserInterfaceManager userInterfaceManager;
-
-    public Slot[] slots;
-    public InvenSlot[] invenSlots;
-    public Item[] items;
-
     public Inventory inventory;
     public Inventory storage;
+    public Crafting crafting;
+
+    [Header("인벤/창고 슬롯 데이터")]
     public int slotIndex = -1;
+    public Slot[] slots;
+    public InvenSlot[] invenSlots;
+
+    [Header("아이템 정보")]
+    public Item[] items;
 
     private void Awake()
     {
         for (int i = 0; i < invenSlots.Length; i++)
             SlotIndexUpdate();
+
+        // 나중에 불러오기에 쓰면 좋을듯
+        // 아직 불러오기 구조를 모르니 대비책으로만 생각해둘것
+        CheckItem();
     }
 
     private void SlotIndexUpdate()
@@ -34,6 +42,24 @@ public class ItemManager : MonoBehaviour
         {
             invenSlots[i].VariableSetting(i);
             ReloadSlot(i, Array.Find(items, x => x.id == slots[i].id));
+        }
+    }
+
+    public void CheckItem()
+    {
+        // ====================
+        // Item.count 초기화용
+        // ====================
+
+        foreach(Item item in items)
+            item.count = 0;
+
+        foreach(Slot slot in slots)
+        {
+            // 빈슬롯 캔슬
+            if (slot.id == 0 || slot == null) continue;
+            Item item = Array.Find(items, x => x.id == slot.id);
+            item.count += slot.count;
         }
     }
 
@@ -66,8 +92,8 @@ public class ItemManager : MonoBehaviour
         // 말도 안되는 것들 리턴
         if (count <= 0 || id <= 0) return false;
 
-        // 람다식으로 item값 서칭, 없으면 리턴
-        Item item = System.Array.Find(items, x => x.id == id);
+        // item값 서칭, 없으면 리턴
+        Item item = Array.Find(items, x => x.id == id);
         if (item == null) return false;
 
         int temp = 0;           // 1번에선 사용 가능한 공간 수, 나머지는 필요한 값
@@ -128,10 +154,10 @@ public class ItemManager : MonoBehaviour
         return true;
     }
 
-    public bool DropItem(int id, int count)
+    public bool CheckItem(int id, int count)
     {
         // ====================
-        // 0. 기본 설정
+        // 아이템 생성 이전 체크용 메서드
         // int id = 아이템 코드
         // int count = 소모되는 개수
         // return bool = false 개수 부족 / true 개수 충분
@@ -140,14 +166,14 @@ public class ItemManager : MonoBehaviour
         // 말도 안되는 것들 리턴
         if (count <= 0 || id <= 0) return false;
 
-        // 람다식으로 item값 서칭, 없으면 리턴
-        Item item = System.Array.Find(items, x => x.id == id);
+        // item값 서칭, 없으면 리턴
+        Item item = Array.Find(items, x => x.id == id);
         if (item == null) return false;
 
-        int temp = 0;   // 다용도 변수
+        int temp = 0;   // 임시 변수
 
         // ====================
-        // 1. 가지고 있는 아이템 검색
+        // 가지고 있는 아이템 검색
         // temp = 현재 가진 해당 아이템 수
         // ====================
         for (int i = 0; i < slots.Length; i++)
@@ -157,9 +183,29 @@ public class ItemManager : MonoBehaviour
         // 가진 아이템 수가 필요한 것보다 적을 경우 리턴
         if (temp < count)
             return false;
+        return true;
+    }
+
+    public bool DropItem(int id, int count)
+    {
+        // ====================
+        // 기본 설정
+        // int id = 아이템 코드
+        // int count = 소모되는 개수
+        // return bool = false 개수 부족 / true 개수 충분
+        // ====================
+
+        // 말도 안되는 것들 리턴
+        if (count <= 0 || id <= 0) return false;
+
+        // item값 서칭, 없으면 리턴
+        Item item = Array.Find(items, x => x.id == id);
+        if (item == null) return false;
+
+        int temp = 0;   // 임시 변수
 
         // ====================
-        // 2. 아이템 소모
+        // 아이템 소모
         // ====================
         for (int i = 0; i < slots.Length; i++)
         {
@@ -179,11 +225,18 @@ public class ItemManager : MonoBehaviour
                 ReloadSlot(i, item);
         }
 
+        // 만약 crafting를 연 상태로 아이템을 획득할 기회가 생길 경우를 대비
+        if (crafting.gameObject.activeSelf)
+            crafting.ReloadResultCount();
+
         return true;
     }
 
     public void DropItem(int slotIndex)
     {
+        // ====================
+        // 아이템 버리기 버튼 누르면 호출
+        // ====================
         if (slotIndex > slots.Length) return;
 
         slots[slotIndex].id = 0;

@@ -24,14 +24,14 @@ public class Crafting : MonoBehaviour
 
     [Header("기본")]
     public CraftType type;      // 제작 아이템 띄울 타입 (Item에서 Type가 같은 것을 가져옴)
-    public Text CountText;     // 생산 개수
-    int resultCount = 1;
+    public Text countText;     // 생산 개수
+    int resultCount = 1;        // 실효값
 
     [Header("제작 결과")]
-    public Item ResultItem;     // none
-    public Image ResultIcon;
-    public Text QuantityText;
-    public Text ItemText;
+    public Item resultItem;     // none
+    public Image resultIcon;
+    public Text quantityText;
+    public Text itemText;
 
     [Header("재료 표시")]
     public Slot[] slots;        // Item.craftMaterials 가져오면 됨
@@ -45,6 +45,7 @@ public class Crafting : MonoBehaviour
     {
         // ====================
         // CraftType가 같은 제작 아이템 검색
+        // item.craftMaterials이 존재하는 아이템은 전부 출력
         // ====================
         foreach (Item item in itemManager.items)
         {
@@ -59,33 +60,46 @@ public class Crafting : MonoBehaviour
         // ====================
         // 조합식 출력하기
         // ====================
-        RefreshItemList(itemList);
+        RefreshItemList();
         ResultItemReload(itemList[0]);
     }
 
-    private void ResultItemReload(Item ResultItem)
+    public void ResultItemReload(Item resultItem)
     {
         // ====================
         // 아이템 조합창에 띄워줌
+        // ResultItem = 제작 목표 아이템
         // ====================
-        this.ResultItem = ResultItem;
-        ResultIcon.sprite = ResultItem.icon;
-        QuantityText.text = ResultItem.count.ToString();
-        ItemText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", ResultItem.productName);
+        this.resultItem = resultItem;
+        resultIcon.sprite = resultItem.icon;
+        quantityText.text = resultItem.count.ToString();
+        itemText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Item Table", resultItem.productName);
 
         for (int i = 0; i < slots.Length; i++)
         {
-            if (ResultItem.craftMaterials.Length <= i)
+            // 비어있는 재료 슬롯 구별
+            if (resultItem.craftMaterials.Length <= i)
             {
+                slots[i].id = 0;
                 icons[i].gameObject.SetActive(false);
                 continue;
             }
 
-            slots[i].id = ResultItem.craftMaterials[i].id;
-            slots[i].count = ResultItem.count;
-            icons[i].sprite = Array.Find(itemManager.items, x => x.id == ResultItem.craftMaterials[i].id).icon;
+            slots[i].id = resultItem.craftMaterials[i].id;
+            slots[i].count = resultItem.count;
+
+            Item item = Array.Find(itemManager.items, x => x.id == resultItem.craftMaterials[i].id);
+
+            if(item == null)
+            {
+                Debug.Log("아이템을 찾을 수 없습니다.");
+                return;
+            }
+
+            icons[i].sprite = item.icon;
+
             Text iconText = icons[i].transform.GetChild(0).GetComponent<Text>();
-            iconText.text = $"{ResultItem.count}/{ResultItem.craftMaterials[i].count}";
+            iconText.text = $"{item.count}/{resultItem.craftMaterials[i].count}";
         }
     }
 
@@ -93,6 +107,7 @@ public class Crafting : MonoBehaviour
     {
         // ====================
         // 슬롯을 가져올 때, 탐색용
+        // 서브 제작창 전용
         // ====================
         foreach (CraftSlot slot in slotList)
             if (!slot.gameObject.activeSelf)
@@ -106,10 +121,10 @@ public class Crafting : MonoBehaviour
         return newSlot;
     }
 
-    public void RefreshItemList(List<Item> items)
+    public void RefreshItemList()
     {
         // ====================
-        // 조합식 슬롯 초기화 후 재부팅
+        // 서브 크래프팅 슬롯 초기화 후 재부팅
         // ====================
         foreach (CraftSlot slot in slotList)
             slot.gameObject.SetActive(false);
@@ -124,13 +139,33 @@ public class Crafting : MonoBehaviour
 
     public void OnCraftButton()
     {
+        // ====================
+        // ResultItem = 목표 아이템 (item)
+        // slots = 아이템 재료 배열 (item.craftMaterials)
+        // resultCount = 생성 개수 (private int)
+        // ====================
 
+        // 제작하기 위한 재료가 충분한지 체크, 없으면 리턴
+        foreach (Slot slot in slots)
+            if (slot != null || slot.id != 0)
+                if (!itemManager.CheckItem(slot.id, slot.count * resultCount))
+                    return;
+
+        // 아이템을 삭제하면서, 다른 조건에 걸린 경우 로그 출력
+        // 개수가 모자른 경우 false를 반환하기 때문에 확인 가능
+        foreach (Slot slot in slots)
+            if (!itemManager.DropItem(slot.id, slot.count * resultCount))
+                Debug.Log($"Item Code : {slot.id} 부족. OnCraftButton 메서드 확인");
+
+        // 아이템 인벤토리에 생성
+        itemManager.LootItem(resultItem.id, resultCount);
     }
 
     public void OnNextButton()
     {
         // ====================
         // 제조 개수 증가
+        // # 99개를 넘을 수 없음
         // ====================
         if (resultCount >= 99) return;
 
@@ -142,6 +177,7 @@ public class Crafting : MonoBehaviour
     {
         // ====================
         // 제조 개수 감소
+        // # 1개 미만으로 감소할 수 없음
         // ====================
         if (resultCount <= 1) return;
 
@@ -154,13 +190,14 @@ public class Crafting : MonoBehaviour
         // ====================
         // 재료 슬롯 개수만 초기화
         // ====================
-        for (int i = 0; i < ResultItem.craftMaterials.Length; i++)
+        for (int i = 0; i < resultItem.craftMaterials.Length; i++)
         {
             Text iconText = icons[i].transform.GetChild(0).GetComponent<Text>();
-            iconText.text = $"{ResultItem.count}/{ResultItem.craftMaterials[i].count * resultCount}";
+            Item item = Array.Find(itemManager.items, x => x.id == resultItem.craftMaterials[i].id);
+            iconText.text = $"{item.count}/{resultItem.craftMaterials[i].count * resultCount}";
         }
 
-        CountText.text = resultCount.ToString();
+        countText.text = resultCount.ToString();
     }
 
     public void OnCraftingUI(CraftType type)

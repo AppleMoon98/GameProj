@@ -22,4 +22,4 @@ MonoBehaviour:
   type: 0
   craftMaterials:
   - id: 101
-    count: 1
+    count: 2

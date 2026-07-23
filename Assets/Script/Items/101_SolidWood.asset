@@ -20,4 +20,6 @@ MonoBehaviour:
   maxCount: 99
   isUseable: 0
   type: 0
-  craftMaterials: []
+  craftMaterials:
+  - id: 102
+    count: 1

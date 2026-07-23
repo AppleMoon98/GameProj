@@ -23,4 +23,5 @@ public class Slot
 {
     public int id = 0;
     public int count = 0;
+    // 다음에 개발할땐 여기다가 이미지 변수도 넣어둬라..
 }
