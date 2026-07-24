@@ -8,7 +8,7 @@ public enum PlayerState
 {
     Idle,
     Attack,
-    Crop
+    Interaction
 }
 
 public class Player : MonoBehaviour
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator CropCo()
     {
-        currentState = PlayerState.Crop;
+        currentState = PlayerState.Interaction;
         animator.SetBool("isCrop", true);
 
         gauge.SetActive(true);

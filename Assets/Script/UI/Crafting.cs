@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
@@ -47,6 +48,8 @@ public class Crafting : MonoBehaviour
         // CraftType가 같은 제작 아이템 검색
         // item.craftMaterials이 존재하는 아이템은 전부 출력
         // ====================
+        slotList.Clear();   // 서브 제작창 초기화
+
         foreach (Item item in itemManager.items)
         {
             if (item.type != type) continue;
@@ -86,7 +89,7 @@ public class Crafting : MonoBehaviour
             }
 
             slots[i].id = resultItem.craftMaterials[i].id;
-            slots[i].count = resultItem.count;
+            slots[i].count = resultItem.craftMaterials[i].count;
 
             Item item = Array.Find(itemManager.items, x => x.id == resultItem.craftMaterials[i].id);
 
@@ -149,16 +152,21 @@ public class Crafting : MonoBehaviour
         foreach (Slot slot in slots)
             if (slot != null || slot.id != 0)
                 if (!itemManager.CheckItem(slot.id, slot.count * resultCount))
-                    return;
+                    continue;
+        //Debug.Log("생산품에 필요한 재료 체크 완료");
 
         // 아이템을 삭제하면서, 다른 조건에 걸린 경우 로그 출력
         // 개수가 모자른 경우 false를 반환하기 때문에 확인 가능
         foreach (Slot slot in slots)
-            if (!itemManager.DropItem(slot.id, slot.count * resultCount))
-                Debug.Log($"Item Code : {slot.id} 부족. OnCraftButton 메서드 확인");
+            itemManager.DropItem(slot.id, slot.count * resultCount);
+        //Debug.Log("아이템 제거 완료, 인벤토리에서 사라진 아이템 직접 확인");
+
+        // 해당 위치 애니메이션이 나온 뒤
+        // 해당 코루틴에 아이템 생성 메서드를 넣어야 할 거 같은데
 
         // 아이템 인벤토리에 생성
         itemManager.LootItem(resultItem.id, resultCount);
+        //Debug.Log("아이템 생산 완료");
     }
 
     public void OnNextButton()
